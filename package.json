@@ -1,13 +1,11 @@
 {
-  "name": "@tencent/tbd-design-react2-seed",
-  "packageName": "tbd",
+  "name": "react-redux-seed",
+  "packageName": "rrs",
   "version": "0.0.1",
-  "title": "TBD Design react 2.0 seed",
-  "description": "tbd react2 seed",
-  "homepage": "http://tbd.oa.com/react2",
+  "title": "react redux seed",
+  "description": "react redux seed",
+  "homepage": "https://github.com/wf123537200/react-seed",
   "keywords": [
-    "tbd",
-    "design",
     "react",
     "react-component",
     "component",
@@ -17,14 +15,14 @@
     "frontend"
   ],
   "contributors": [
-    "tbd"
+    "seed"
   ],
   "repository": {
     "type": "git",
-    "url": "http://git.oa.com/gdata-pc-fd/tbd-design-react2"
+    "url": "https://github.com/wf123537200/react-seed.git"
   },
   "bugs": {
-    "url": "http://git.oa.com/gdata-pc-fd/tbd-design-react/issues"
+    "url": "https://github.com/wf123537200/react-seed/issues"
   },
   "main": "components",
   "files": [
