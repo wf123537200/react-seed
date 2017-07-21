@@ -1,0 +1,80 @@
+{
+  "name": "@tencent/tbd-design-react2-seed",
+  "packageName": "tbd",
+  "version": "0.0.1",
+  "title": "TBD Design react 2.0 seed",
+  "description": "tbd react2 seed",
+  "homepage": "http://tbd.oa.com/react2",
+  "keywords": [
+    "tbd",
+    "design",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "start-kit",
+    "seed",
+    "frontend"
+  ],
+  "contributors": [
+    "tbd"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://git.oa.com/gdata-pc-fd/tbd-design-react2"
+  },
+  "bugs": {
+    "url": "http://git.oa.com/gdata-pc-fd/tbd-design-react/issues"
+  },
+  "main": "components",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-import": "^1.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cheerio": "^1.0.0-rc.2",
+    "css-loader": "^0.28.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.3",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --config build/conf.dev.js",
+    "prd": "npm run clear-res && webpack -p --config build/conf.prd.js && npm run create-index",
+    "lint": "eslint components ./*.js --ext '.js,.jsx'",
+    "test": "webpack -p --config build/conf.test.js",
+    "clear-res": "node build/clear-res.js",
+    "create-index": "node build/create-index.js"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
