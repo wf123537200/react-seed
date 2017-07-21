@@ -1,3 +1,4 @@
+
 import React, {PropTypes} from 'react';
 
 // 静态方法，不随react实例创建

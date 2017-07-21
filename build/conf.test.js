@@ -1,25 +1,81 @@
 const path = require('path');
-const base = require('./conf.base');
-const fs = require('fs');
+var webpack = require('webpack');
 
-// 入口文件集合函数,每个文件进行打包
-module.exports = Object.assign({
-    entry: {
-        'xx': path.resolve(__dirname, '../demo/App.jsx')
-    },
+module.exports = {
+    entry: undefined,
     output: {
-        path: path.resolve(__dirname, "../res"),
-        publicPath: "/",
-        filename: '[name].js',
-        libraryTarget: 'umd',
-        library: '[name]',
-        umdNamedDefine: true
+        pathinfo: true
     },
-    devtool: false,
-    // 添加插件
-    plugins: [
-    ],
-    externals : {
-        react: 'react'
-    }
-}, base.opts);
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            presets: [
+                                [
+                                    'es2015',
+                                    {
+                                        'modules': false
+                                    }
+                                ],
+                                'react',
+                                'stage-0'
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
+            }, {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: '[name].[ext]?[hash:7]'
+                        }
+                    }
+                ]
+            }, {
+                test: /\.woff|\.woff2|\.svg|.eot|\.ttf/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: '[name].[ext]?[hash:7]'
+                        }
+                    }
+                ]
+            }
+        ],
+    },
+    resolve: {
+        modules: [
+            "node_modules",
+            path.resolve(__dirname, "app")
+        ],
+        extensions: [".js", ".json", ".jsx", ".css"],
+        alias: {
+            "src": path.resolve(__dirname, "../src"),
+        },
+    },
+};

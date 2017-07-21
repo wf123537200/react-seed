@@ -1,0 +1,40 @@
+{
+  "extends": ["eslint-config-airbnb"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "Babel": true,
+    "React": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "max-len": [1, 150, 2], // 一行最长150，tab为两个空格
+    "object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
+    "indent": [0, 4], //缩进风格
+    "react/jsx-indent-props": 0, // react 代码没必要缩进,
+    "react/jsx-indent": [0, "tab"],
+    "import/no-extraneous-dependencies": 0, // 不用检查import是否是在列表中
+    "import/no-unresolved": 0, // 不用检查import是否能引用
+    "import/extensions": 0, // 不用检查是否能找到文件
+    "eol-last": 0, // 结尾不用新起一行
+    "comma-dangle": 0, // 不规定是否需要最后增加逗号
+    "semi": 1, // 分号只告警不报错
+    "func-names": 0,
+    "arrow-body-style": 0,
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx", ".md"] }],
+    "no-param-reassign": 0,
+    "no-return-assign": 0,
+    "consistent-return": 0,
+    "no-redeclare": 0,
+    "react/require-extension": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/anchor-has-content": 0,
+    "react/no-danger": 0
+  }
+}
