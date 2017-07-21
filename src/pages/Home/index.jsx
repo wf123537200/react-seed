@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Provider} from 'react-redux';
 import {getInitialState, reducers} from './reducers';
-import thunkMiddleware from 'redux-thunk';
-import { createStore, compose, applyMiddleware } from 'redux';
+import {initStore} from 'utils/store'
 
 // 静态方法，不随react实例创建
 /* eslint no-unused-vars: 0 */
@@ -21,7 +20,7 @@ class Home extends React.PureComponent {
     constructor(props) {
         super(props);
         // 初始刷store，也可以在这里增加中间件
-        this.store = createStore(reducers, getInitialState(), compose(applyMiddleware(thunkMiddleware)));
+        this.store = initStore(reducers, getInitialState());
         this.state = {};
     }
 
