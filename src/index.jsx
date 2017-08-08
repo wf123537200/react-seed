@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RouterWrap from './router';
+// 主题样式引入
+require('@tencent/ttd-ui');
 
 // 公共组件
 import Header from './components/Header';

@@ -76,6 +76,8 @@ module.exports = {
         extensions: [".js", ".json", ".jsx", ".css"],
         alias: {
             "src": path.resolve(__dirname, "../src"),
+            "tbdd": "@tencent/tbd-design-react2",
+            "utils": path.resolve(__dirname, "../src/utils")
         },
     },
 };

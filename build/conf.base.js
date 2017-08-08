@@ -1,4 +1,10 @@
 const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
+// input dir
+const APP_DIR = path.resolve(__dirname, './');
+// output dir
+const BUILD_DIR = path.resolve(__dirname, './dist');
 const opts = {
     module: {
         rules: [
@@ -25,9 +31,30 @@ const opts = {
                 ]
             },
             {
+                test: /\.png$/,
+                use: 'url-loader?limit=100000',
+            },
+            {
+                test: /\.jpg$/,
+                use: 'file-loader',
+            },
+            {
+                test: /\.gif$/,
+                use: 'file-loader',
+            },
+            /* for font-awesome */
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: 'url-loader?limit=10000&minetype=application/font-woff',
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: 'file-loader',
+            },
+            /* for require('*.less') */
+            {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-                exclude: /node_modules/,
+                use: [ 'style-loader', 'css-loader' ]
             },
             {
                 test: /\.scss$/,
@@ -38,27 +65,26 @@ const opts = {
                 }, {
                     loader: "sass-loader" // compiles Sass to CSS
                 }]
-            }, {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name].[ext]?[hash:7]'
-                        }
-                    }
-                ]
-            }, {
-                test: /\.woff|\.woff2|\.svg|.eot|\.ttf/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            name: '[name].[ext]?[hash:7]'
-                        }
-                    }
-                ]
+            },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            },
+            /* for mapbox */
+            {
+                test: /\.json$/,
+                use: 'json-loader',
+            },
+            {
+                test: /\.js$/,
+                include: APP_DIR + '/node_modules/mapbox-gl/js/render/painter/use_program.js',
+                use: 'transform/cacheable?brfs',
             }
         ],
     },
@@ -70,7 +96,9 @@ const opts = {
         ],
         extensions: [".js", ".json", ".jsx", ".css"],
         alias: {
-            "components": path.resolve(__dirname, "../components"),
+            "components": path.resolve(__dirname, "../src/components"),
+            "tbdd": "@tencent/tbd-design-react2",
+            "utils": path.resolve(__dirname, "../src/utils")
         },
     },
 
@@ -81,6 +109,8 @@ const opts = {
         assetFilter: function (assetFilename) {
             return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
         }
+    },
+    externals : {
     }
 };
 

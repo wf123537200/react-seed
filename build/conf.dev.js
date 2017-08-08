@@ -3,17 +3,14 @@ const webpack = require('webpack');
 const base = require('./conf.base');
 
 module.exports = Object.assign({
-    entry: [
-        // 为热价在添加
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        '../src',
-        '../src/index-css'
-    ],
+    entry: {
+        bundle: '../src',
+        all: '../src/index-css'
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "/",
-        filename: 'bundle.js',
+        filename: `[name].js`,
     },
     // 快速模式
     devtool: "cheap-module-eval-source-map",

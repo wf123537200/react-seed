@@ -1,5 +1,6 @@
-
 import React, {PropTypes} from 'react';
+import {Menu, Icon} from 'tbdd';
+import {Button, DatePicker} from 'tbdd'
 
 // 静态方法，不随react实例创建
 /* eslint no-unused-vars: 0 */
@@ -17,7 +18,9 @@ class Header extends React.PureComponent {
     // 构造函数
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            current: 'home',
+        };
     }
 
     // 参数传递类方法
@@ -34,9 +37,6 @@ class Header extends React.PureComponent {
     componentWillReceiveProps() {
     }
 
-    shouldComponentUpdate() {
-    }
-
     componentWillUpdate() {
     }
 
@@ -46,9 +46,17 @@ class Header extends React.PureComponent {
     componentWillUnmount() {
     }
 
+    static shouldComponentUpdate() {
+        return true;
+    }
+
     // event 类方法，采用直接绑定的箭头函数形式取代bind(this)的写法, 传参例外
     // event 以on开头
-    onEvent = () => {
+    onClick = (e) => {
+        this.setState({
+            current: e.key,
+        });
+        location.hash = '#/' + e.key;
     };
 
     // getter 类渲染类方法 以get开头
@@ -63,7 +71,18 @@ class Header extends React.PureComponent {
     render() {
         return (
             <div className="header">
-                我来组成头部
+                <Menu
+                    onClick={this.onClick}
+                    selectedKeys={[this.state.current]}
+                    mode="horizontal"
+                >
+                    <Menu.Item key="home">
+                        <Icon type="mail"/>首页
+                    </Menu.Item>
+                    <Menu.Item key="page1">
+                        <Icon type="appstore"/>page1
+                    </Menu.Item>
+                </Menu>
             </div>
         );
     }
