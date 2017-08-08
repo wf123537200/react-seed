@@ -6,7 +6,7 @@ import {
 
 // pages
 import Home from './pages/Home';
-import Page1 from './pages/Page1';
+import Component from './pages/Component';
 
 const routesConf = [
     {
@@ -14,19 +14,8 @@ const routesConf = [
         component: Home
     },
     {
-        path: '/page1',
-        component: Page1,
-        // 使用此方法，父组件必须实现shouldComponentUpdate，并返回Boolean值
-        routes: [
-            {
-                path: '/page1/a',
-                component: Home
-            },
-            {
-                path: '/page1/b',
-                component: Page1
-            }
-        ]
+        path: '/component',
+        component: Component,
     }
 ];
 

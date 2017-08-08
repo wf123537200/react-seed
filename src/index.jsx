@@ -12,7 +12,8 @@ import Sidebar from './components/Sidebar';
 const App = () => (
     <div>
         <Header />
-        <Sidebar />
+        {/* 这里可以增加侧边栏导航 */}
+        {/*<Sidebar />*/}
         <RouterWrap />
     </div>
 );

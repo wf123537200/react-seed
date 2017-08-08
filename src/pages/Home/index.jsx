@@ -66,7 +66,17 @@ class Home extends React.PureComponent {
     // 渲染方法
     render() {
         return (<Provider store={this.store}>
-            <div>home</div>
+            <div>
+                <div>
+                    <h1>React Redux Seed 2</h1>
+                    这个种子项目用于快速的搭建起一个基于 react redux 的项目，种子项目基于当前的实践沉淀而来，后续可根据需要不断扩展
+                    轻量级，如需使用重量级框架，则可以使用 [http://git.code.oa.com/fd-base-js/react-redux-seed]
+                </div>
+                <div>
+                    <h1>使用说明</h1>
+                    <a href="http://git.code.oa.com/fd-base-js/react-seed2">猛戳这里看文档</a>
+                </div>
+            </div>
         </Provider>);
     }
 }

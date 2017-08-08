@@ -79,8 +79,8 @@ class Header extends React.PureComponent {
                     <Menu.Item key="home">
                         <Icon type="mail"/>首页
                     </Menu.Item>
-                    <Menu.Item key="page1">
-                        <Icon type="appstore"/>page1
+                    <Menu.Item key="component">
+                        <Icon type="appstore"/>组件
                     </Menu.Item>
                 </Menu>
             </div>

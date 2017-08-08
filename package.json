@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-seed",
+  "name": "@tencent/react-redux-seed2",
   "packageName": "rrs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "title": "react redux seed",
   "description": "react redux seed",
   "homepage": "https://github.com/wf123537200/react-seed",

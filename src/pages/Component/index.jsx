@@ -61,7 +61,12 @@ class Page1 extends React.PureComponent {
     // 渲染方法
     render() {
         return (
-            <div>page1</div>
+            <div>
+                <div>
+                    <a href="https://ant.design">包含所有ant.design（v 2.10.0）组件</a>
+                </div>
+                <div>及自定义组件</div>
+            </div>
         );
     }
 }
