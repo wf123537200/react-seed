@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // input dir
 const APP_DIR = path.resolve(__dirname, './');
 // output dir
@@ -53,38 +54,14 @@ const opts = {
             },
             /* for require('*.less') */
             {
-                test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
-            },
-            {
-                test: /\.scss$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "sass-loader" // compiles Sass to CSS
-                }]
-            },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
-            },
-            /* for mapbox */
-            {
-                test: /\.json$/,
-                use: 'json-loader',
-            },
-            {
-                test: /\.js$/,
-                include: APP_DIR + '/node_modules/mapbox-gl/js/render/painter/use_program.js',
-                use: 'transform/cacheable?brfs',
+                test: /\.(css|scss)$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                })
             }
         ],
     },

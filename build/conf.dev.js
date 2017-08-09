@@ -1,11 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const base = require('./conf.base');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = Object.assign({
     entry: {
         bundle: '../src',
-        all: '../src/index-css',
+        vendor: ['react', 'react-dom', '@tencent/tbd-design-react2']
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -36,5 +38,18 @@ module.exports = Object.assign({
         // 为热加载添加插件
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
+        //必须配置，react的公共模块
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor'],
+            filename: 'vendor.js'
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(process.cwd(), 'src/index.html'),
+            filename: 'index.html'
+        }),
+        new ExtractTextPlugin({
+            allChunks: true,
+            filename: 'css/[name].css'
+        }),
     ]
 }, base.opts);
