@@ -18,3 +18,4 @@ function deleteall(path) {
 };
 
 deleteall(path.resolve(__dirname, "../dist"));
+deleteall(path.resolve(__dirname, "../res"));

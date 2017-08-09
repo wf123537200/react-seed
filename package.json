@@ -33,7 +33,11 @@
   "dependencies": {
     "@tencent/ttd-ui": "^1.0.2",
     "bundle-loader": "^0.5.5",
+    "del": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^3.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
@@ -78,7 +82,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config build/conf.dev.js",
-    "prd": "npm run clear-res && webpack -p --colors --profile --progress --config build/conf.prd.js",
+    "prd": "npm run clear-res && webpack --colors --progress --config build/conf.prd.js && gulp build",
     "lint": "eslint src ./*.js --ext '.js,.jsx'",
     "test": "karam start",
     "clear-res": "node build/clear-res.js"
