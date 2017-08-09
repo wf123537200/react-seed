@@ -32,6 +32,9 @@ class Header extends React.PureComponent {
     }
 
     componentDidMount() {
+        this.setState({
+            current: location.hash.substr(2, location.hash.length) || 'home',
+        });
     }
 
     componentWillReceiveProps() {
