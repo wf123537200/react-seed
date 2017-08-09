@@ -56,7 +56,7 @@ class Header extends React.PureComponent {
         this.setState({
             current: e.key,
         });
-        location.hash = '#/' + e.key;
+        location.hash = e.key;
     };
 
     // getter 类渲染类方法 以get开头

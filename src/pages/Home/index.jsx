@@ -39,6 +39,7 @@ class Home extends React.PureComponent {
     }
 
     shouldComponentUpdate() {
+        return true;
     }
 
     componentWillUpdate() {

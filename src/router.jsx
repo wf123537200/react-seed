@@ -4,9 +4,16 @@ import {
     Route
 } from 'react-router-dom'
 
+import Bundle from './utils/Bundle';
 // pages
 import Home from './pages/Home';
-import Component from './pages/Component';
+import Component from 'bundle-loader?lazy!./pages/Component';
+
+const lazyLoad = (props, Component) => (
+    <Bundle load={Component}>
+        {(Container) => <Container {...props}/>}
+    </Bundle>
+);
 
 const routesConf = [
     {
@@ -15,7 +22,7 @@ const routesConf = [
     },
     {
         path: '/component',
-        component: Component,
+        component: props => lazyLoad(props, Component)
     }
 ];
 
@@ -31,6 +38,7 @@ const renderRoute = (routes) => {
 const RouterWrap = () => (
     <Router>
         <div className="container">
+            <Route key="home" path="/" component={Home} exact/>
             {renderRoute(routesConf)}
         </div>
     </Router>

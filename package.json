@@ -32,6 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@tencent/ttd-ui": "^1.0.2",
+    "bundle-loader": "^0.5.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
@@ -82,6 +83,5 @@
     "clear-res": "node build/clear-res.js",
     "create-index": "node build/create-index.js"
   },
-  "pre-commit": [
-  ]
+  "pre-commit": []
 }

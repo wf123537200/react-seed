@@ -5,12 +5,13 @@ const base = require('./conf.base');
 module.exports = Object.assign({
     entry: {
         bundle: '../src',
-        all: '../src/index-css'
+        all: '../src/index-css',
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "/",
         filename: `[name].js`,
+        chunkFilename: '[name].js'
     },
     // 快速模式
     devtool: "cheap-module-eval-source-map",
